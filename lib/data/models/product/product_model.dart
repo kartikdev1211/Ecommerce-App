@@ -1,55 +1,44 @@
-
 class ProductModel {
-  String? id;
+  String? sId;
   String? category;
   String? title;
   String? description;
   int? price;
   List<String>? images;
+  String? updatedOn;
   String? createdOn;
-  int? v;
 
-  ProductModel({this.id, this.category, this.title, this.description, this.price, this.images, this.createdOn, this.v});
+  ProductModel(
+      {this.sId,
+      this.category,
+      this.title,
+      this.description,
+      this.price,
+      this.images,
+      this.updatedOn,
+      this.createdOn});
 
   ProductModel.fromJson(Map<String, dynamic> json) {
-    if(json["_id"] is String) {
-      id = json["_id"];
-    }
-    if(json["category"] is String) {
-      category = json["category"];
-    }
-    if(json["title"] is String) {
-      title = json["title"];
-    }
-    if(json["description"] is String) {
-      description = json["description"];
-    }
-    if(json["price"] is int) {
-      price = json["price"];
-    }
-    if(json["images"] is List) {
-      images = json["images"] == null ? null : List<String>.from(json["images"]);
-    }
-    if(json["createdOn"] is String) {
-      createdOn = json["createdOn"];
-    }
-    if(json["__v"] is int) {
-      v = json["__v"];
-    }
+    sId = json['_id'];
+    category = json['category'];
+    title = json['title'];
+    description = json['description'];
+    price = json['price'];
+    images = json['images'].cast<String>();
+    updatedOn = json['updatedOn'];
+    createdOn = json['createdOn'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["_id"] = id;
-    _data["category"] = category;
-    _data["title"] = title;
-    _data["description"] = description;
-    _data["price"] = price;
-    if(images != null) {
-      _data["images"] = images;
-    }
-    _data["createdOn"] = createdOn;
-    _data["__v"] = v;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['_id'] = sId;
+    data['category'] = category;
+    data['title'] = title;
+    data['description'] = description;
+    data['price'] = price;
+    data['images'] = images;
+    data['updatedOn'] = updatedOn;
+    data['createdOn'] = createdOn;
+    return data;
   }
 }

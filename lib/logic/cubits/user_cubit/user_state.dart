@@ -9,7 +9,7 @@ class UserLoadingState extends UserState {}
 class UserLoggedInState extends UserState {
   final UserModel userModel;
 
-  UserLoggedInState({required this.userModel});
+  UserLoggedInState(this.userModel);
 }
 
 class UserLoggedOutState extends UserState {}

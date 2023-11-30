@@ -31,7 +31,7 @@ class UserModel {
 
   UserModel.fromJson(Map<String, dynamic> json) {
     if (json["_id"] is String) {
-      id = json["_id"];
+      sId = json["_id"];
     }
     if (json["fullName"] is String) {
       fullName = json["fullName"];

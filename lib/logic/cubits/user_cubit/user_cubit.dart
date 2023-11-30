@@ -25,7 +25,7 @@ class UserCubit extends Cubit<UserState> {
       required String email,
       required password}) async {
     await Preferences.saveUserDetails(email, password);
-    emit(UserLoggedInState(userModel: userModel));
+    emit(UserLoggedInState(userModel));
   }
 
   void signIn({
