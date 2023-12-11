@@ -43,13 +43,13 @@ class EcommerceApp extends StatelessWidget {
 class MyBlocObserver extends BlocObserver {
   @override
   void onCreate(BlocBase bloc) {
-    print("Created: $bloc");
+    // print("Created: $bloc");
     super.onCreate(bloc);
   }
 
   @override
   void onChange(BlocBase bloc, Change change) {
-    print("Change in $bloc: $change");
+    // print("Change in $bloc: $change");
     super.onChange(bloc, change);
   }
 }

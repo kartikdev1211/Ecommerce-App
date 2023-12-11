@@ -47,8 +47,8 @@ class UserCubit extends Cubit<UserState> {
     required String email,
     required String password,
   }) async {
+    emit(UserLoadingState());
     try {
-      emit(UserLoadingState());
       UserModel userModel =
           await _userRepository.createAccount(email: email, password: password);
       _emitLoggedInState(
@@ -56,5 +56,22 @@ class UserCubit extends Cubit<UserState> {
     } catch (ex) {
       emit(UserErrorState(message: ex.toString()));
     }
+  }
+
+  Future<bool> updateUser(UserModel userModel) async {
+    emit(UserLoadingState());
+    try {
+      UserModel updatedUser = await _userRepository.updateUser(userModel);
+      emit(UserLoggedInState(updatedUser));
+      return true;
+    } catch (ex) {
+      emit(UserErrorState(message: ex.toString()));
+      return false;
+    }
+  }
+
+  void signOut() async {
+    await Preferences.clear();
+    emit(UserLoggedOutState());
   }
 }

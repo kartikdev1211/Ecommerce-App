@@ -5,7 +5,7 @@ class Preferences {
     SharedPreferences instance = await SharedPreferences.getInstance();
     await instance.setString("email", email);
     await instance.setString("password", password);
-    print("Details Saved");
+    // print("Details Saved");
   }
 
   static Future<Map<String, dynamic>> fetchUserDetails() async {
@@ -13,5 +13,10 @@ class Preferences {
     String? email = instance.getString("email");
     String? password = instance.getString("password");
     return {"email": email, "password": password};
+  }
+
+  static Future<void> clear() async {
+    SharedPreferences instance = await SharedPreferences.getInstance();
+    await instance.clear();
   }
 }
